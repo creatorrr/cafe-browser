@@ -2,12 +2,13 @@
   "name": "cafe-browser",
   "version": "0.0.0",
   "description": "A simple, barebones module for running mocha tests in the browser.",
-  "main": "index.js",
-  "bin": "serve.js",
+  "main": "./index.js",
+  "bin": "./cli.js",
   "scripts": {
     "build": "./node_modules/.bin/gulp build",
     "prepublish": "npm run build",
-    "start": "./node_modules/.bin/gulp watch"
+    "watch": "./node_modules/.bin/gulp watch",
+    "start": "node cli.js"
   },
   "repository": {
     "type": "git",
@@ -31,8 +32,11 @@
     "gulp-babel": "^4.0.0"
   },
   "dependencies": {
+    "browserify": "^9.0.6",
     "express": "^4.12.3",
+    "lodash": "^3.6.0",
     "mocha": "^2.2.1",
+    "mustache-express": "^1.2.1",
     "open": "0.0.5",
     "request": "^2.54.0"
   }
