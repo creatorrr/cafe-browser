@@ -1,0 +1,39 @@
+{
+  "name": "cafe-browser",
+  "version": "0.0.0",
+  "description": "A simple, barebones module for running mocha tests in the browser.",
+  "main": "index.js",
+  "bin": "serve.js",
+  "scripts": {
+    "build": "./node_modules/.bin/gulp build",
+    "prepublish": "npm run build",
+    "start": "./node_modules/.bin/gulp watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/creatorrr/cafe-browser.git"
+  },
+  "keywords": [
+    "mocha",
+    "test",
+    "browser",
+    "es6"
+  ],
+  "author": "Diwank Singh <diwank.singh@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/creatorrr/cafe-browser/issues"
+  },
+  "homepage": "https://github.com/creatorrr/cafe-browser",
+  "devDependencies": {
+    "dox": "^0.6.1",
+    "gulp": "^3.8.11",
+    "gulp-babel": "^4.0.0"
+  },
+  "dependencies": {
+    "express": "^4.12.3",
+    "mocha": "^2.2.1",
+    "open": "0.0.5",
+    "request": "^2.54.0"
+  }
+}
