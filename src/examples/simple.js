@@ -28,7 +28,6 @@ module.exports = mocha => {
     runAll = tests => {
       suite("logdriver");
       each( tests, run );
-      mocha.checkLeaks();
       mocha.run();
     };
 
