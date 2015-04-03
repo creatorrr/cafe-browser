@@ -1,7 +1,9 @@
 import browserify from "browserify";
+import colors from "colors/safe";
 import each from "lodash/collection/each";
 import express from "express";
 import extend from "lodash/object/extend";
+import format from "format-json-stream";
 import fs from "fs";
 import mustache from "mustache-express";
 import open from "open";
@@ -58,14 +60,30 @@ tester.get('/tests.js', (_, res) => {
 });
 
 // Status report endpoints
-tester.post("/pass", () => {
-  console.log("All tests passed");
-  process.exit(0);
+tester.post("/pass", (req, res) => {
+  // Pipe test stats to stdout
+  console.log(colors.green.bold("All tests passed.", "Stats:"));
+  req.pipe(format())
+    .pipe(process.stdout);
+
+  // Close request and exit
+  res.status(200)
+    .end();
+
+  setImmediate(process.exit.bind(process, 0));
 });
 
-tester.post("/fail", () => {
-  console.log("One or more tests failing");
-  process.exit(1);
+tester.post("/fail", (req, res) => {
+  // Pipe test stats to stderr
+  console.log(colors.red.bold("One or more tests failing.", "Stats:"));
+  req.pipe(format())
+    .pipe(process.stderr);
+
+  // Close request and exit
+  res.status(200)
+    .end();
+
+  setImmediate(process.exit.bind(process, 1));
 });
 
 // Export tester object

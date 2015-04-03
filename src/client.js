@@ -13,8 +13,7 @@ let
       // Attach end listener
       runner.on("end", () => request.post({
         url: `${ window.location.origin }/${ !runner.failures ? "pass" : "fail" }`,
-        testInstance: runner,
-        json: true
+        json: { stats: runner.stats }
       }));
 
       return runner;

@@ -5,6 +5,7 @@ import each from "lodash/collection/each";
 module.exports = mocha => {
   // Setup mocha
   mocha.setup("qunit");
+  mocha.reporter("html");
 
   // Require tests
   let

@@ -33,7 +33,9 @@
   },
   "dependencies": {
     "browserify": "^9.0.6",
+    "colors": "^1.0.3",
     "express": "^4.12.3",
+    "format-json-stream": "^0.1.5",
     "lodash": "^3.6.0",
     "mocha": "^2.2.1",
     "mustache-express": "^1.2.1",
