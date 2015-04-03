@@ -62,9 +62,11 @@ tester.get('/tests.js', (_, res) => {
 // Status report endpoints
 tester.post("/pass", (req, res) => {
   // Pipe test stats to stdout
-  console.log(colors.green.bold("All tests passed.", "Stats:"));
-  req.pipe(format())
-    .pipe(process.stdout);
+  console.log(colors.green.bold("All tests passed."));
+
+  if (tester.get("DEBUG"))
+    req.pipe(format())
+      .pipe(process.stdout);
 
   // Close request and exit
   res.status(200)
@@ -75,9 +77,11 @@ tester.post("/pass", (req, res) => {
 
 tester.post("/fail", (req, res) => {
   // Pipe test stats to stderr
-  console.log(colors.red.bold("One or more tests failing.", "Stats:"));
-  req.pipe(format())
-    .pipe(process.stderr);
+  console.log(colors.red.bold("One or more tests failing."));
+
+  if (tester.get("DEBUG"))
+    req.pipe(format())
+      .pipe(process.stderr);
 
   // Close request and exit
   res.status(200)
