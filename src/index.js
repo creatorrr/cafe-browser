@@ -7,11 +7,12 @@ import format from "format-json-stream";
 import fs from "fs";
 import mustache from "mustache-express";
 import open from "open";
+import path from "path";
 
 const
   ROOT = __dirname,
   MODULES = `${ ROOT }/node_modules`,
-  MOCHA = `${ MODULES }/mocha`,
+  MOCHA = path.dirname(require.resolve('mocha')),
 
   tester = express();
 
