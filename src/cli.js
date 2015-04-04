@@ -13,12 +13,20 @@ opts
     callback (path) {
       // Make sure file exists
       try {
-        require.resolve(path);
-      } catch ({message}) {
-        // Print error message and exit
-        return `Invalid test file path. Error: ${ message }`;
+        // First try to resolve naked path
+        path = require.resolve(path);
+      } catch (e) {
+        try {
+          // See if file present in cwd
+          path = require.resolve(`${ process.cwd() }/${ path }`);
+        } catch ({message}) {
+          // Not found anywhere?
+          // Print error message and exit
+          return `Invalid test file path. Error: ${ message }`;
+        }
       }
 
+      // Set path and move on
       tester.set("TEST_PATH", path);
     }
   })
