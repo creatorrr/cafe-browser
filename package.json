@@ -3,7 +3,9 @@
   "version": "0.1.1",
   "description": "A simple, barebones module for running mocha tests in the browser.",
   "main": "./index.js",
-  "bin": "./cafe.js",
+  "bin": {
+    "cafe": "./cli.js"
+  },
   "scripts": {
     "build": "./node_modules/.bin/gulp build",
     "prepublish": "npm run build",
