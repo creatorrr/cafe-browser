@@ -1,5 +1,5 @@
 # Exclude src files
-src
+src/**/*.js
 
 # .env file
 .env
