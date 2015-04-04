@@ -1,6 +1,6 @@
 {
   "name": "cafe-browser",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A simple, barebones module for running mocha tests in the browser.",
   "main": "./index.js",
   "bin": {
